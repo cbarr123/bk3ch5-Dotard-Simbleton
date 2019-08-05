@@ -123,17 +123,6 @@ const createHTMLRep = (busObject) => {
         </section>
     `
 }
-
-const createPurHTMLRep = (busObject) => {
-    return `
-        <section>
-            <h4>${busObject.agentFullName}</h4>
-            <h4>${busObject.company}</h4>
-            <h4>${busObject.phoneNumber}</h4>
-        </section>
-    `
-}
-
 businesses.forEach(busObject => {
     const htmlRepresentation = createHTMLRep(busObject)
     createPlaceForHTMLRep.innerHTML += htmlRepresentation
@@ -158,20 +147,37 @@ if (busObject.companyIndustry === "Manufacturing"){
     createPlaceForHTMLRep.innerHTML += htmlRepresentation
     }
 })
-//purchasing agents
+//----------purchasing agents - map -----------------
+const createPlaceForPurchaseHTMLRep = document.querySelector("#purchaseInfo")
+const createPurHTMLRep = (busObject) => {
+  return `
+      <section>
+          <h4>${busObject.agentFullName}</h4>
+          <p>${busObject.company}</p>
+          <p>${busObject.phoneNumber}</p>
+      </section>
+  `
+}
 const purAgents = businesses.map(business => {
     return {agentFullName:`${business.purchasingAgent.nameFirst} ${business.purchasingAgent.nameLast}`,
             company:business.companyName,
             phoneNumber:business.phoneWork,}
 })
-console.log(purAgents)
-
 purAgents.forEach(agent => {
     const htmlRepresentation =  createPurHTMLRep(agent)
-    createPlaceForHTMLRep.innerHTML += htmlRepresentation
+    createPlaceForPurchaseHTMLRep.innerHTML += htmlRepresentation
 });
-
-
+//-------------Company Search------------------------
+const createPlaceForBusSearchHTMLRep = document.querySelector("#busSearch")
+document.addEventListener("keypress", keyPressEvent => {
+  if(keyPressEvent.charCode === 13) {
+    //* when the user presses Enter, find the business
+    const foundBusiness = businesses.find (
+      business =>
+        business.companyName.includes(keyPressEvent.target.value)
+    )
+  }
+})
 
 
     
