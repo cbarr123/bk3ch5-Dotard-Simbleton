@@ -172,12 +172,43 @@ const createPlaceForBusSearchHTMLRep = document.querySelector("#busSearch")
 document.addEventListener("keypress", keyPressEvent => {
   if(keyPressEvent.charCode === 13) {
     //* when the user presses Enter, find the business
-    const foundBusiness = businesses.find (
+    const foundBusiness = businesses.find(
       business =>
-        business.companyName.includes(keyPressEvent.target.value)
-    )
+        business.companyName.includes(keyPressEvent.target.value)        
+    );
+    //console.log(foundBusiness);
+    createPlaceForBusSearchHTMLRep.innerHTML =
+      `
+      <section>
+          <h2>${foundBusiness.companyName}</h2>
+          <p>${foundBusiness.addressFullStreet}</p>
+          <p>${foundBusiness.addressCity}, ${foundBusiness.addressStateCode}  ${foundBusiness.addressZipCode}</p>
+      </section>
+      `
   }
 })
+// -------------------Purchase Search ------------------
+const createPlaceForPurchaseSearchHTMLRep = document.querySelector("#purchaseSearch");
+document.addEventListener("keypress", keyPressEvent => {
+  if(keyPressEvent.charCode === 13) {
+    //* when the user presses Enter, find the purchaser
+    const foundPuchaser = businesses.find(
+      business =>
+        business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value)        
+    );
+    console.log(foundPuchaser);
+    createPlaceForPurchaseSearchHTMLRep.innerHTML =
+      `
+      <section>
+          <h2>${foundPuchaser.companyName}</h2>
+          <h4>${foundPuchaser.companyName}</h2>
+          <p>${foundPuchaser.addressFullStreet}</p>
+          <p>${foundPuchaser.addressCity}, ${foundPuchaser.addressStateCode}  ${foundPuchaser.addressZipCode}</p>
+      </section>
+      `
+  }
+})  
+
 
 
     
