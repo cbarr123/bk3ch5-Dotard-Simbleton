@@ -127,8 +127,9 @@ const createHTMLRep = (busObject) => {
 const createPurHTMLRep = (busObject) => {
     return `
         <section>
-            <h4>${busObject.nameLast} ${busObject.nameFirst}</h4>
-            <h4>${busObject.companyName}</h4>
+            <h4>${busObject.agentFullName}</h4>
+            <h4>${busObject.company}</h4>
+            <h4>${busObject.phoneNumber}</h4>
         </section>
     `
 }
