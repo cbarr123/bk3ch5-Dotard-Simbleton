@@ -108,14 +108,11 @@ const businesses = [
       addressStateCode: "MD",
       addressFullStreet: "7157 Hudson Street Ford",
       addressCity: "Watrous"
-
-
     }
   ];
 
-
-
 const createPlaceForHTMLRep = document.querySelector("#busInfo")
+
 const createHTMLRep = (busObject) => {
     return `
         <section>
@@ -126,6 +123,16 @@ const createHTMLRep = (busObject) => {
         </section>
     `
 }
+
+const createPurHTMLRep = (busObject) => {
+    return `
+        <section>
+            <h4>${busObject.nameLast} ${busObject.nameFirst}</h4>
+            <h4>${busObject.companyName}</h4>
+        </section>
+    `
+}
+
 businesses.forEach(busObject => {
     const htmlRepresentation = createHTMLRep(busObject)
     createPlaceForHTMLRep.innerHTML += htmlRepresentation
@@ -137,9 +144,33 @@ businesses.filter(busObject => {
         createPlaceForHTMLRep.innerHTML += htmlRepresentation
         }
    })
-   businesses.filter(busObject => {
-    if (busObject.companyIndustry === "Manufacturing"){
-        const htmlRepresentation = createHTMLRep(busObject)
-        createPlaceForHTMLRep.innerHTML += htmlRepresentation
-        }
-   })
+businesses.filter(busObject => {
+if (busObject.companyIndustry === "Manufacturing"){
+    const htmlRepresentation = createHTMLRep(busObject)
+    createPlaceForHTMLRep.innerHTML += htmlRepresentation
+    }
+})
+
+businesses.map(busObject => {
+if (busObject.companyIndustry === "Manufacturing"){
+    const htmlRepresentation = createHTMLRep(busObject)
+    createPlaceForHTMLRep.innerHTML += htmlRepresentation
+    }
+})
+//purchasing agents
+const purAgents = businesses.map(business => {
+    return {agentFullName:`${business.purchasingAgent.nameFirst} ${business.purchasingAgent.nameLast}`,
+            company:business.companyName,
+            phoneNumber:business.phoneWork,}
+})
+console.log(purAgents)
+
+purAgents.forEach(agent => {
+    const htmlRepresentation =  createPurHTMLRep(agent)
+    createPlaceForHTMLRep.innerHTML += htmlRepresentation
+});
+
+
+
+
+    
