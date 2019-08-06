@@ -176,7 +176,7 @@ document.addEventListener("keypress", keyPressEvent => {
       business =>
         business.companyName.includes(keyPressEvent.target.value)        
     );
-    //console.log(foundBusiness);
+    console.log(foundBusiness);
     createPlaceForBusSearchHTMLRep.innerHTML =
       `
       <section>
@@ -188,26 +188,26 @@ document.addEventListener("keypress", keyPressEvent => {
   }
 })
 // -------------------Purchase Search ------------------
-const createPlaceForPurchaseSearchHTMLRep = document.querySelector("#purchaseSearch");
-document.addEventListener("keypress", keyPressEvent => {
-  if(keyPressEvent.charCode === 13) {
-    //* when the user presses Enter, find the purchaser
-    const foundPuchaser = businesses.find(
-      business =>
-        business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value)        
-    );
-    console.log(foundPuchaser);
-    createPlaceForPurchaseSearchHTMLRep.innerHTML =
-      `
-      <section>
-          <h2>${foundPuchaser.companyName}</h2>
-          <h4>${foundPuchaser.companyName}</h2>
-          <p>${foundPuchaser.addressFullStreet}</p>
-          <p>${foundPuchaser.addressCity}, ${foundPuchaser.addressStateCode}  ${foundPuchaser.addressZipCode}</p>
-      </section>
-      `
-  }
-})  
+// const createPlaceForPurchaseSearchHTMLRep = document.querySelector("#purchaseSearch");
+// document.addEventListener("keypress", keyPressEvent => {
+//   if(keyPressEvent.charCode === 13) {
+//     //* when the user presses Enter, find the purchaser
+//     const foundPurchaser = businesses.find(
+//       business =>
+//         business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value)        
+//     );
+//     console.log(foundPurchaser);
+//     createPlaceForPurchaseSearchHTMLRep.innerHTML =
+//       `
+//       <section>
+//           <h2>${foundPurchaser.companyName}</h2>
+//           <h4>${foundPurchaser.companyName}</h2>
+//           <p>${foundPurchaser.addressFullStreet}</p>
+//           <p>${foundPurchaser.addressCity}, ${foundPurchaser.addressStateCode}  ${foundPurchaser.addressZipCode}</p>
+//       </section>
+//       `
+//   }
+// })  
 
 
 
